@@ -1,0 +1,31 @@
+#!/bin/bash
+#SBATCH --job-name=PI
+#SBATCH --time=01:00:00
+#SBATCH --partition=hype
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=1
+
+
+PI=$HOME/PI
+START=`date +"%d-%m-%Y.%Hh%Mm%Ss"`
+OUTPUT=$HOME/PI.$START.csv
+
+
+echo output file: $OUTPUT
+
+echo "app,metric,value" > $OUTPUT
+
+cd $PI
+
+for step in `seq 1 30`; do
+	echo "step: $step"	
+	for app in *.x; do
+		printf "\t app: $app \n"
+			./$app 2> /tmp/pi.err 1> /tmp/pi.time
+			TIME=`grep -i "TIME" /tmp/pi.time | awk {'print $3'}`
+			echo "$app,time,$TIME" >> $OUTPUT
+	done
+done
+
+echo "done"
+
