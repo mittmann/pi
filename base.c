@@ -14,7 +14,6 @@ double GetTime(void)
 
 static long num_steps= 100000000;
 double step;
-#define NUM_THREADS 2
 
 void main ()
 {

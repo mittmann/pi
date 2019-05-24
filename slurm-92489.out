@@ -1,0 +1,32 @@
+output file: /home/users/ammaliszewski/pi.hype2.24-05-2019.16h01m57s.csv
+step: 1
+	 app: base.c 
+	 app: critical.c 
+	 app: false_sharing.c 
+	 app: reduction.c 
+	 app: seq.c 
+step: 1
+	 app: base.c 
+	 app: critical.c 
+	 app: false_sharing.c 
+	 app: reduction.c 
+	 app: seq.c 
+step: 1
+	 app: base.c 
+	 app: critical.c 
+	 app: false_sharing.c 
+	 app: reduction.c 
+	 app: seq.c 
+step: 1
+	 app: base.c 
+	 app: critical.c 
+	 app: false_sharing.c 
+	 app: reduction.c 
+	 app: seq.c 
+step: 1
+	 app: base.c 
+	 app: critical.c 
+	 app: false_sharing.c 
+	 app: reduction.c 
+	 app: seq.c 
+done
