@@ -18,7 +18,7 @@ for step in `seq 1 30`; do
 		echo "step: $step"	
 		for app in *.c; do
 			gcc -o $app.x $app -fopenmp -DNUM_THREADS=$threads
-			export OMP_PLACES="{0-$threads-1}"
+			export OMP_PLACES="{0:$((2*($threads-1))):2}"
 			export OMP_PROC_BIND=true
 			printf "\t app: $app \n"
 			./$app.x 2> /tmp/pi.err 1> /tmp/pi.time
