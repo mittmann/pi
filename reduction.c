@@ -16,7 +16,7 @@ static long num_steps= 100000000;
 double step;
 void main ()
 {
-	int i; double temp1, temp2, tempf, pi, sum=0.0;
+	int i; double temp1, temp2, tempf, x, pi, sum=0.0;
 	temp1=GetTime();
 	step = 1.0/(double) num_steps;
 	#pragma omp parallel
@@ -26,10 +26,10 @@ void main ()
 		  for (i=0;i< num_steps; i++){
 		x = (i+0.5)*step;
 		sum = sum + 4.0/(1.0+x*x);
-	}
+		}
 	
 	}
-	pi +=step*sum;
+	pi=step*sum;
 
 	temp2=GetTime();
 	tempf=temp2-temp1;
