@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -O3 -g -fopenmp
+CFLAGS = -O0 -g -fopenmp
 
 objects = seq base critical reduction false_sharing
 all: $(objects) 
