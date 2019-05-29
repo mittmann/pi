@@ -1,6 +1,9 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <sys/time.h>
 #include <omp.h>
+
+#define DEFAULT_STEPS 1000000
 
 double GetTime(void)
 {
@@ -12,10 +15,16 @@ double GetTime(void)
 		return(Time);
 }
 
-static long num_steps= 100000000;
+static long num_steps;
 double step;
-void main ()
+
+int main (int argc, char **argv)
 {
+        if (argc > 1)
+            num_steps = atoi(argv[1]);
+        else
+            num_steps = DEFAULT_STEPS;
+
 	int i, nthreads; double temp1, temp2, tempf, pi=0.0;
 	temp1=GetTime();
 	step = 1.0/(double) num_steps;

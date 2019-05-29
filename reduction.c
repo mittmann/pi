@@ -1,7 +1,9 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <sys/time.h>
 #include <omp.h>
 
+#define DEFAULT_STEPS 1000000
 double GetTime(void)
 {
 	struct  timeval time;
@@ -12,11 +14,18 @@ double GetTime(void)
 		return(Time);
 }
 
-static long num_steps= 100000000;
 double step;
-void main ()
+unsigned long int num_steps;
+
+int main (int argc, char **argv)
 {
-	int i; double temp1, temp2, tempf, x, pi, sum=0.0;
+        if (argc > 1)
+            num_steps = atoi(argv[1]);
+        else
+            num_steps = DEFAULT_STEPS;
+
+	int i; 
+	double temp1, x, pi, sum=0.0;
 	temp1=GetTime();
 	step = 1.0/(double) num_steps;
 	#pragma omp parallel
@@ -31,7 +40,5 @@ void main ()
 	}
 	pi=step*sum;
 
-	temp2=GetTime();
-	tempf=temp2-temp1;
-	printf("TIME = %f\n", tempf);
+	printf("TIME = %f\n", GetTime() - temp1);
 }

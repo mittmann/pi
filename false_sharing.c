@@ -3,6 +3,8 @@
 #include <sys/time.h>
 #include <omp.h>
 
+#define DEFAULT_STEPS 1000000
+
 double GetTime(void)
 {
 	struct  timeval time;
@@ -13,14 +15,19 @@ double GetTime(void)
 		return(Time);
 }
 
-static long num_steps= 100000000;
 double step;
 #define PAD 8
+static long num_steps;
 
-void main ()
+int main (int argc, char **argv)
 {
+        if (argc > 1)
+            num_steps = atoi(argv[1]);
+        else
+            num_steps = DEFAULT_STEPS;
+
 	int i, nthreads;
-       	double temp1, temp2, tempf, pi, *sum;
+       	double temp1, pi, *sum;
         sum = malloc(sizeof(double)*PAD*omp_get_max_threads());
 	temp1=GetTime();
 	step = 1.0/(double) num_steps;
@@ -37,7 +44,5 @@ void main ()
 	}
 	}
 	for(i=0, pi=0.0;i<nthreads;i++)pi += sum[i*PAD]*step;
-	temp2=GetTime();
-	tempf=temp2-temp1;
-	printf("TIME = %f\n", tempf);
+	printf("TIME = %f\n", GetTime() - temp1);
 }
