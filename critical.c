@@ -19,7 +19,6 @@ void main ()
 	int i, nthreads; double temp1, temp2, tempf, pi=0.0;
 	temp1=GetTime();
 	step = 1.0/(double) num_steps;
-	omp_set_num_threads(NUM_THREADS);
 	#pragma omp parallel
 	{
 		int i, id, nthrds;
