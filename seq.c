@@ -24,7 +24,7 @@ int main (int argc, char **argv)
 	else
 	    num_steps = DEFAULT_STEPS;
 	int i;
-       	double temp1, x, pi, sum = 0.0;
+       	double temp1, temp2, x, pi, sum = 0.0;
 	temp1=GetTime();
 	step = 1.0/(double) num_steps;
 	
@@ -33,5 +33,7 @@ int main (int argc, char **argv)
 		sum = sum + 4.0/(1.0+x*x);
 	}
 	pi = step * sum;
-	printf("TIME = %f\n", GetTime() - temp1);
+	temp2 = GetTime();
+	printf("pi: %f\n", pi);
+	printf("TIME = %f\n", temp2 - temp1);
 }

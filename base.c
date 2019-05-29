@@ -26,7 +26,7 @@ int main (int argc, char **argv)
             num_steps = DEFAULT_STEPS;
 
 	int i, nthreads; 
-	double temp1, x, pi;
+	double temp1, temp2, x, pi;
 	double *sum;
         sum = malloc(omp_get_max_threads()* sizeof(double));
 //	fflush(stdout);
@@ -46,5 +46,7 @@ int main (int argc, char **argv)
 			}
 	}
 	for(i=0, pi=0.0;i<nthreads;i++)pi += sum[i]*step;
-	printf("TIME = %f\n", GetTime() - temp1);
+	temp2 = GetTime();
+	printf("pi: %f\n", pi);
+	printf("TIME = %f\n", temp2 - temp1);
 }

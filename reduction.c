@@ -25,7 +25,7 @@ int main (int argc, char **argv)
             num_steps = DEFAULT_STEPS;
 
 	int i; 
-	double temp1, x, pi, sum=0.0;
+	double temp1, temp2, x, pi, sum=0.0;
 	temp1=GetTime();
 	step = 1.0/(double) num_steps;
 	#pragma omp parallel
@@ -39,6 +39,7 @@ int main (int argc, char **argv)
 	
 	}
 	pi=step*sum;
-
-	printf("TIME = %f\n", GetTime() - temp1);
+	temp2 = GetTime();
+	printf("pi: %f\n", pi);
+	printf("TIME = %f\n", temp2 - temp1);
 }
