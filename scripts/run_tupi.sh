@@ -9,10 +9,10 @@ do
 		export OMP_PLACES="{0:$maxcore}"
  		export OMP_PROC_BIND=true
 		export OMP_NUM_THREADS=$THREADS
-		time=`./$VERSION 3000000000 | grep TIME | cut -f3 -d' '`
+		time=`../bin/$VERSION 3000000000 | grep TIME | cut -f3 -d' '`
 		echo "$f1,$f2,$f3,$f4,$f5,$f6,$f7,"$machine",$time"  
 	else
 		echo "$f1,$f2,$f3,$f4,$f5,$f6,$f7,"\"machine\"",$f8"  
 		
 	fi
-    done < pi_doe_$machine.csv > output_$machine.csv
+    done < ../csv/doe/pi_doe_$machine.csv > ../csv/outputs/output_$machine.csv
