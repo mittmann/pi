@@ -15,16 +15,16 @@ double GetTime(void)
 }
 
 double step;
-unsigned long int num_steps;
+unsigned long long int num_steps;
 
 int main (int argc, char **argv)
 {
         if (argc > 1)
-            num_steps = atoi(argv[1]);
+            num_steps = strtoull(argv[1],argv,10);
         else
             num_steps = DEFAULT_STEPS;
 
-	int i; 
+	unsigned long long int i; 
 	double temp1, temp2, x, pi, sum=0.0;
 	temp1=GetTime();
 	step = 1.0/(double) num_steps;

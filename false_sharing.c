@@ -17,16 +17,17 @@ double GetTime(void)
 
 double step;
 #define PAD 8
-static long num_steps;
+unsigned long long num_steps;
 
 int main (int argc, char **argv)
 {
         if (argc > 1)
-            num_steps = atoi(argv[1]);
+		num_steps = strtoull(argv[1],argv,10);
         else
             num_steps = DEFAULT_STEPS;
 
-	int i, nthreads;
+	unsigned long long i;
+	int nthreads;
        	double temp1, temp2, pi, *sum;
         sum = malloc(sizeof(double)*PAD*omp_get_max_threads());
 	temp1=GetTime();

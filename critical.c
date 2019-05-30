@@ -15,13 +15,13 @@ double GetTime(void)
 		return(Time);
 }
 
-static long num_steps;
+unsigned long long num_steps;
 double step;
 
 int main (int argc, char **argv)
 {
         if (argc > 1)
-            num_steps = atoi(argv[1]);
+		num_steps = strtoull(argv[1],argv,10);
         else
             num_steps = DEFAULT_STEPS;
 
@@ -30,7 +30,8 @@ int main (int argc, char **argv)
 	step = 1.0/(double) num_steps;
 	#pragma omp parallel
 	{
-		int i, id, nthrds;
+		int  id, nthrds;
+		unsigned long long i;
 		double x, sum;
 		id=omp_get_thread_num();
 		nthrds=omp_get_num_threads();
