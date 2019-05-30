@@ -13,7 +13,7 @@
            ));
 
   export.design(pi_doe,
-                path=".",
+                path="../csv/doe",
                 filename="pi_doe_hype",
                 type="csv",
                 replace=TRUE,
@@ -33,7 +33,7 @@
            ));
 
   export.design(pi_doe,
-                path=".",
+                path="../csv/doe",
                 filename="pi_doe_draco",
                 type="csv",
                 replace=TRUE,
@@ -53,7 +53,7 @@
            ));
 
   export.design(pi_doe,
-                path=".",
+                path="../csv/doe",
                 filename="pi_doe_tupi",
                 type="csv",
                 replace=TRUE,
